@@ -1,11 +1,9 @@
-# Makefile for the ELIZA project -- MILESTONE SUBMISSION
-# Only the core engine + component 1 (Generic Verbs) are wired up at
-# this stage. No special flags are required beyond C++17 support.
-
 CXX := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -O2
 
-SOURCES := main.cpp Eliza.cpp Utils.cpp ResponseTracker.cpp GenericVerbs.cpp
+SOURCES := main.cpp Eliza.cpp Utils.cpp ResponseTracker.cpp \
+           Concern.cpp GenericVerbs.cpp Relationships.cpp Financial.cpp \
+           Wellbeing.cpp Education.cpp Entertainment.cpp Family.cpp
 
 OBJECTS := $(SOURCES:.cpp=.o)
 TARGET := eliza
