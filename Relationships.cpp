@@ -1,4 +1,5 @@
 // Relationships.cpp
+
 #include "Relationships.h"
 #include "Rule.h"
 #include "Utils.h"
@@ -11,10 +12,10 @@ namespace {
         { std::regex(R"(\bi love (.*)$)", std::regex::icase),
           { "What is it about %R% that you love?", "How long have you felt this way about %R%?" } },
 
-        { std::regex(R"(\bmy (girlfriend|boyfriend|partner) (.*)$)", std::regex::icase),
-          { "Tell me more about your relationship -- what's going on with %R%?" } },
+        { std::regex(R"(\bmy (girlfriend|boyfriend|partner)\b.*$)", std::regex::icase),
+          { "Tell me more about your relationship with your %R%." } },
 
-        { std::regex(R"(\bmy (spouse|wife|husband) (.*)$)", std::regex::icase),
+        { std::regex(R"(\bmy (spouse|wife|husband)\b.*$)", std::regex::icase),
           { "How are things between you and your %R%?" } },
 
         { std::regex(R"(\b(marriage|married|engaged) (.*)$)", std::regex::icase),
