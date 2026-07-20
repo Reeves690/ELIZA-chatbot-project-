@@ -1,14 +1,15 @@
-// Eliza.cpp
-//
-// this dispatch() only wires up the one major
-// functionality component required to be complete for the project
-// milestone (Generic Verbs -- component 1), plus the fallback prompts
-// and repeated-input tracking. 
-
+/// Eliza.cpp
 #include "Eliza.h"
 #include "Utils.h"
 
+#include "Concern.h"
 #include "GenericVerbs.h"
+#include "Relationships.h"
+#include "Financial.h"
+#include "Wellbeing.h"
+#include "Education.h"
+#include "Entertainment.h"
+#include "Family.h"
 
 #include <regex>
 #include <vector>
@@ -51,7 +52,16 @@ std::string Eliza::fallbackResponse() {
 std::string Eliza::dispatch(const std::string& input) {
     std::string response;
 
-    // Milestone scope: only component 1 (Generic Verbs) is wired in here.
+    // Concern is checked first on every turn: language suggesting distress
+    // or hostility should never be missed just because some other rule
+    // (e.g. a generic verb pattern) happened to match earlier in the text.
+    if (matchConcern(input, response))        return response;
+    if (matchRelationships(input, response))  return response;
+    if (matchFamily(input, response))         return response;
+    if (matchFinancial(input, response))      return response;
+    if (matchWellbeing(input, response))      return response;
+    if (matchEducation(input, response))      return response;
+    if (matchEntertainment(input, response))  return response;
     if (matchGenericVerbs(input, response))   return response;
 
     return fallbackResponse();
