@@ -9,6 +9,6 @@
 
 #include <string>
 
-bol matchFamily(const std::string& input, std::string& outResponse);
+bool matchFamily(const std::string& input, std::string& outResponse);
 
 #endif // FAMILY_H
